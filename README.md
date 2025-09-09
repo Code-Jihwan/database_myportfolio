@@ -23,6 +23,6 @@ https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks
 
 https://github.com/Code-Jihwan/database_myportfolio/blob/769b9b831b83a7ccf2793c5be0fe498778581fed/scripts/csv_to_sql.py
 
-books.csv -> inserts.sql
+books.csv -> book_inserts.sql
 
 ***
