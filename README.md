@@ -12,7 +12,7 @@ https://github.com/Code-Jihwan/database_myportfolio/blob/769b9b831b83a7ccf2793c5
 
 ***
 
-### 데이터 구하기! Kaggle 데이터셋 활용하기
+### 데이터 구하기 Kaggle 데이터셋 활용하기
 #### Goodreads-books Dataset
 https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks
 
@@ -24,5 +24,9 @@ https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks
 https://github.com/Code-Jihwan/database_myportfolio/blob/769b9b831b83a7ccf2793c5be0fe498778581fed/scripts/csv_to_sql.py
 
 books.csv -> book_inserts.sql
+
+***
+
+### 데이터베이스 안 Books, Members, Loans 테이블에 데이터 입력 완료
 
 ***
