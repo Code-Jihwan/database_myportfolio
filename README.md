@@ -27,6 +27,13 @@ books.csv -> book_inserts.sql
 
 ***
 
-### 데이터베이스 안 Books, Members, Loans 테이블에 데이터 입력 완료
+### mylibary 데이터베이스 (Books, Members, Loans 테이블)
+- Books Table : 도서 정보 입력 (book_inserts.sql 사용)
+- Members Table : 회원 정보 입력 (5명 회원 수동 입력)
+- Loans Table : 대출 정보 입력 (입력 예정)
+
+***
+
+
 
 ***
