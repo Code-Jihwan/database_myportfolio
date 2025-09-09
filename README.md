@@ -5,7 +5,8 @@
 ### ER 다이어그램 작성
 <img width="1467" height="487" alt="도서관리 ER 다이어그램 작성" src="https://github.com/user-attachments/assets/129fcbec-407b-42e0-9f1d-8e6648ce4b3b" />
 
-#### 데이터베이스 구축 완료
+schema.sql -> 데이터베이스 구축 완료
+
 ***
 
 ### 데이터 구하기! Kaggle 데이터셋 활용하기
