@@ -3,7 +3,7 @@ USE mylibrary;
 
 CREATE TABLE Books (
 	id INT auto_increment primary key,
-    title varchar(100) NOT NULL,
+    title varchar(255) NOT NULL,
     author varchar(50),
     publish_date DATE,
     isbn varchar(13) unique NOT NULL
@@ -28,3 +28,19 @@ CREATE TABLE Loans (
     -- Members 데이터가 삭제되면 관련 대출 기록도 함께 삭제
     FOREIGN KEY (member_id) REFERENCES Members(id) ON DELETE CASCADE
 );
+
+
+SET FOREIGN_KEY_CHECKS = 0; -- 외래 키 제약 조건 비활성화
+TRUNCATE TABLE Books;
+TRUNCATE TABLE Members;
+TRUNCATE TABLE Loans;
+SET FOREIGN_KEY_CHECKS = 1; -- 외래 키 제약 조건 다시 활성화
+
+
+-- 대출을 하는 사람은 5명 수동 추가
+INSERT INTO Members (name, email, gender) VALUES
+('김철수', 'chulsoo.kim@example.com', 'M'),
+('이영희', 'younghee.lee@example.com', 'F'),
+('박지성', 'jisung.park@example.com', 'M'),
+('김연아', 'yuna.kim@example.com', 'F'),
+('손흥민', 'heungmin.son@example.com', 'M');
