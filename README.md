@@ -34,7 +34,14 @@ books.csv -> book_inserts.sql
 
 ***
 
-추가) 파이썬 패키지 및 프로젝트 관리 -> UV 사용
+#### 추가) 파이썬 패키지 및 프로젝트 관리 -> UV 사용
+
 블로그 포스팅 정리 (직접 작성) : https://velog.io/@nuguri/Python-UV-패키지-관리
 
 ***
+
+
+***
+
+
+
