@@ -139,7 +139,7 @@ def del_book_by_isbn(book_isbn):
 
 # 삭제 기능
 def del_book_by_title(book_title):
-    """Title로 책 한 권을 데이터베이스에서 삭제하는 함수"""
+    """Title로 책을 데이터베이스에서 삭제하는 함수"""
     conn = None
     cursor = None
     try:
@@ -160,3 +160,27 @@ def del_book_by_title(book_title):
             conn.close()
 
 
+# 수정 기능
+def update_book(book_id, title, author, publish_date, isbn):
+    """ID를 기준으로 책 정보를 수정하는 함수"""
+    conn = None
+    cursor = None
+    try:
+        conn = mysql.connector.connect(**db_config)
+        cursor = conn.cursor()
+        
+        query = """
+            UPDATE Books 
+            SET title = %s, author = %s, publish_date = %s, isbn = %s 
+            WHERE id = %s
+        """
+        cursor.execute(query, (title, author, publish_date, isbn, book_id))
+        conn.commit()
+
+    except mysql.connector.Error as err:
+        print(f"데이터베이스 오류: {err}")
+    finally:
+        if cursor is not None:
+            cursor.close()
+        if conn is not None and conn.is_connected():
+            conn.close()
