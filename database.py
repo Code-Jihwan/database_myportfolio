@@ -8,6 +8,7 @@ db_config = {
     'database': 'mylibrary'
 }
 
+# 조회 기능
 def get_all_books():
     """모든 책 목록을 데이터베이스에서 가져오는 함수"""
     conn = None  # finally 블록에서 사용하기 위해 미리 변수 선언
@@ -34,6 +35,8 @@ def get_all_books():
         if conn is not None and conn.is_connected():
             conn.close()
 
+
+# 조회 기능
 def get_book_by_isbn(book_isbn):
     """ISBN으로 책 한 권을 데이터베이스에서 가져오는 함수"""
     conn = None
@@ -57,6 +60,8 @@ def get_book_by_isbn(book_isbn):
         if conn is not None and conn.is_connected():
             conn.close()
             
+            
+# 조회 기능
 def get_book_by_title(book_title):
     """title으로 책 한 권을 데이터베이스에서 가져오는 함수"""
     conn = None
@@ -83,6 +88,8 @@ def get_book_by_title(book_title):
         if conn is not None and conn.is_connected():
             conn.close()            
 
+
+# 추가 기능
 def add_book(title, author, publish_date, isbn):
     """새 책을 데이터베이스에 추가하는 함수"""
     conn = None
@@ -104,4 +111,52 @@ def add_book(title, author, publish_date, isbn):
         if cursor is not None:
             cursor.close()
         if conn is not None and conn.is_connected():
+            conn.close()  
+            
+            
+# 삭제 기능
+def del_book_by_isbn(book_isbn):
+    """ISBN으로 책 한 권을 데이터베이스에서 삭제하는 함수"""
+    conn = None
+    cursor = None
+    try:
+        conn = mysql.connector.connect(**db_config)
+        cursor = conn.cursor(dictionary=True)
+        
+        query = "Delete from books where isbn = %s"
+        cursor.execute(query, (book_isbn,))
+        conn.commit() 
+
+    except mysql.connector.Error as err:
+        print(f"데이터베이스 오류: {err}")
+        return None
+    finally:
+        if cursor is not None:
+            cursor.close()
+        if conn is not None and conn.is_connected():
             conn.close()
+
+
+# 삭제 기능
+def del_book_by_title(book_title):
+    """Title로 책 한 권을 데이터베이스에서 삭제하는 함수"""
+    conn = None
+    cursor = None
+    try:
+        conn = mysql.connector.connect(**db_config)
+        cursor = conn.cursor(dictionary=True)
+        
+        query = "Delete from books where title = %s"
+        cursor.execute(query, (book_title,))
+        conn.commit() 
+
+    except mysql.connector.Error as err:
+        print(f"데이터베이스 오류: {err}")
+        return None
+    finally:
+        if cursor is not None:
+            cursor.close()
+        if conn is not None and conn.is_connected():
+            conn.close()
+
+

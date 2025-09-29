@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from database import get_all_books, get_book_by_isbn, get_book_by_title, add_book
+from database import get_all_books, get_book_by_isbn, get_book_by_title, add_book, del_book_by_isbn, del_book_by_title
 
 app = Flask(__name__) # Flask 앱 생성
 
@@ -59,13 +59,25 @@ def read():
     return render_template('read.html', books=books_to_display)  # 도서 목록을 템플릿에 전달
 
 
-@app.route('/update') # 도서 수정 페이지
+@app.route('/update', methods = ['GET', 'POST']) # 도서 수정 페이지
 def update():
     return render_template('update.html')
 
 
-@app.route('/delete') # 도서 삭제 페이지
+@app.route('/delete', methods = ['GET', 'POST']) # 도서 삭제 페이지
 def delete():
+    if request.method == 'POST':
+        # 폼에서 입력한 도서 정보를 가져옵니다.
+        isbn = request.form.get('isbn')
+        title = request.form.get('title')
+        
+        if isbn:    # isbn이 입력되었으면 isbn으로 삭제
+            del_book_by_isbn(isbn)
+        elif title: # title이 입력되었으면 title로 삭제
+            del_book_by_title(title)
+        
+        return redirect(url_for('read'))  # 책 삭제 후 전체 목록 페이지로 이동
+    
     return render_template('delete.html')
 
 if __name__ == '__main__':
